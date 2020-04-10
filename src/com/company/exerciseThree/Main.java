@@ -1,6 +1,6 @@
 package com.company.exerciseThree;
 
-import com.company.exerciseTwo.one.NegativeNumberException;
+import com.company.exerciseTwo.three.NegativeNumberException;
 
 import java.util.Scanner;
 
