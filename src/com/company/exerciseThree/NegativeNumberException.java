@@ -1,4 +1,4 @@
-package com.company.exerciseTwo.three;
+package com.company.exerciseThree;
 
 public class NegativeNumberException extends Exception {
     public NegativeNumberException(String errorMessage) {
