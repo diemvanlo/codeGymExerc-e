@@ -4,24 +4,40 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws NegativeNumberException {
-        // write your code here
-        Scanner sc = new Scanner(System.in);
-        int[] array = {10, 4, 6, 7, 8, 6, 0, 0, 0, 0};
-        System.out.print("Enter value need to delete: ");
-        int[] result = new int[9];
+    static class IllegalRightTriangleException extends Exception {
+        String errorMessage;
 
-        byte value = 0;
-        try {
-            value = sc.nextByte();
-        } catch (Exception exception) {
-            throw new NegativeNumberException("Not byte number");
+        public IllegalRightTriangleException(String inErrorMessage) {
+            errorMessage = inErrorMessage;
         }
-        for (int i = 0; i <= 9; i++) {
-            if (value != array[i]) {
-                System.out.println(array[i]);
+
+        public String getString() {
+            return errorMessage;
+        }
+    }
+
+    static class RightTriangle {
+        public RightTriangle(int side1, int side2, int side3) throws IllegalRightTriangleException {
+            if (side1 + side2 < side3 || side1 + side3 < side2 || side2 + side3 < side1)
+                throw new IllegalRightTriangleException("Not a triangle");
+            else {
+
+                throw new IllegalRightTriangleException("Is a right triangle ");
+
             }
         }
-        int number = sc.nextInt();
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhap 3 canh Tam Giac: ");
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        try {
+            RightTriangle r = new RightTriangle(a, b, c);
+        } catch (IllegalRightTriangleException e) {
+            System.out.println(e);
+        }
     }
 }

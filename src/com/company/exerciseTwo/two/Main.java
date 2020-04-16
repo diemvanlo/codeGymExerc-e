@@ -3,24 +3,50 @@ package com.company.exerciseTwo.two;
 import java.util.Scanner;
 
 public class Main {
+    double a, b, c;
+
+    private Main(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    private double getDelta() {
+        return (b * b) - 4 * (a * c);
+    }
+
+    private double gerRoot1() {
+        return (-b + Math.sqrt(getDelta())) / (2 * a);
+    }
+
+    private double gerRoot2() {
+        return (-b - Math.sqrt(getDelta())) / (2 * a);
+    }
+
+    private String display() {
+        if (this.getDelta() > 0) {
+            System.out.println(this.gerRoot1());
+            System.out.println(this.gerRoot2());
+        } else if (this.getDelta() == 0) {
+            System.out.println("PT co 1 ng ");
+        } else {
+            System.out.println("PT voo nghiem");
+        }
+        return "a =" + a + " b = " + b + " c = " + c;
+    }
+
 
     public static void main(String[] args) {
-	// write your code here
-        Scanner InputType = new Scanner(System.in);
-        int NumPrime;
-        System.out.println("nhap vao so ban muon kiem tra");
-        NumPrime = InputType.nextInt();
-        int count = 0;
-        for (int i=1;i<=Math.sqrt(NumPrime);i++) {
-            if (NumPrime % i ==0){
-                count += 1;
-            }
-        }
-        if (count ==1) {
-            System.out.println(NumPrime + " la so nguyen to");
-        }else {
-            System.out.println(NumPrime + " khong la so nguyen to");
-        }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("nhap vao a");
+        double a = sc.nextDouble();
+        System.out.println("nhap vao b");
+        double b = sc.nextDouble();
+        System.out.println("nhap vao c");
+        double c = sc.nextDouble();
+
+        Main giaiPTB2 = new Main(a, b, c);
+        System.out.println(giaiPTB2.display());
 
     }
 }

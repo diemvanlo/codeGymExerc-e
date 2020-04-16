@@ -12,12 +12,17 @@ public class Main {
 
     public static String printPrimeNumber(int n) {
         String result = "";
-        for (int i = 2; i<=n; i++) {
-            int divisible = 0;
-            for (int j = 2; j <= i; j++) {
-                if ((i%j) == 0) divisible += 1;
+        for (int i = 2; i <= n; i++) {
+            int nn = 0;
+            for (int j = 2; j <= Math.sqrt(i); j++) {
+                if ((i % j) == 0) {
+                    nn = 1;
+                    break;
+                }
             }
-            if (divisible == 1) result += i + "\t";
+            if (nn == 0){
+                System.out.println(i);
+            }
         }
 
         return result;
